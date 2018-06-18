@@ -37,7 +37,6 @@ class Admin extends Component {
     fetch(`http://localhost:4000`)
     .then(resp => resp.json())
     .then((data) => {
-        data = data.filter(i => i.type == "meetup")
         this.setState({data: data, currentSlide: data[0]
       })
     })
@@ -55,6 +54,8 @@ class Admin extends Component {
   }
 
   sendInfo = (e, slide) => {
+    console.log(e);
+    console.log(slide);
     e.preventDefault()
     const form = {};
     for (let i = 0; i < e.target.elements.length; i++) {
@@ -63,33 +64,35 @@ class Admin extends Component {
       }
     }
     form["type"] = this.state.currentSlide.type;
+    console.log(form);
+
     //TODO POST method is sending the object not correctly
     this.setState({form: form})
 
-    if(slide.state.form._id){
-      axios.put(`http://localhost:4000/admin/edit/${slide.state.form._id}`, form)
-      .then(response => {
-        console.log(response.data.message);
-        if(response.data.message === "Slide updated successfully!"){
-          this.alertFunc("Slide edited successful", "primary")
-        } else {
-          this.alertFunc("Error: " + response.data.message, "danger")
-          console.log("Error: ", response);
-        }
-      })
-      .catch(function (error) {
-        console.log("Error: ", error);
-      })
-    } else {
-
-      axios.post('http://localhost:4000/admin/add', form)
-      .then(function (response) {
-        console.log("Slide added successful: ", response);
-      })
-      .catch(function (error) {
-        console.log("Error: ", error);
-      })
-    }
+    // if(slide.state.form._id){
+    //   axios.put(`http://localhost:4000/admin/edit/${slide.state.form._id}`, form)
+    //   .then(response => {
+    //     console.log(response.data.message);
+    //     if(response.data.message === "Slide updated successfully!"){
+    //       this.alertFunc("Slide edited successful", "primary")
+    //     } else {
+    //       this.alertFunc("Error: " + response.data.message, "danger")
+    //       console.log("Error: ", response);
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log("Error: ", error);
+    //   })
+    // } else {
+    //
+    //   axios.post('http://localhost:4000/admin/add', form)
+    //   .then(function (response) {
+    //     console.log("Slide added successful: ", response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log("Error: ", error);
+    //   })
+    // }
   }
   slideHandler(slide) {
     this.setState({currentSlide: slide})

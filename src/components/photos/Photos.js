@@ -41,15 +41,15 @@ class Photos extends React.Component {
     return (<div className="splinter h-100">
       <div className=" d-flex flex-column h-100">
       <div className="h-75">
-        <img className="h-100" src={this.state.active} alt=""/>
+        <img className="w-100" src={this.state.active} alt=""/>
       </div>
       <div className="d-flex h-25 pt-2 pb-4 align-items-end ">
         {
-          images.map((slide, index) => <div className={"p-2 h-100 splinter " + (
+          images.map((slide, index) => <div className={"p-2 splinter " + (
               this.state.active === slide
               ? " blue"
               : "")}>
-            <img className=" h-100 " key={index} id={index} src={slide} alt={this.state.active}/>
+                <img width="150" className="  " key={index} id={index} src={slide} alt={this.state.active}/>
           </div>)
         }
 
