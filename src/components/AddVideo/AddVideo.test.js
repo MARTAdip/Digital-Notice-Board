@@ -9,8 +9,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 // ------------------load Addvideo
 // ---------------------------------
+const data = {"_id":"5ad3ab0fd7f3e78f8a6b493c","title":"Create restful curl api using nodeJs, express and mongoose","description":"you can learn how to create curl api usign nodejs experess and mongoose.","displayDate":"2004-11-01T00:00:00.000Z","expiryDate":"1979-08-23T00:00:00.000Z","content":"7FOmlkQAEgU","type":"video","__v":0}
 function loadAddVideo () {
-    var app = shallow(<AddVideo />);
+    var app = shallow(<AddVideo data={data}/>);
     const mainComponent = app.find('.AddVideo');
     return mainComponent;
 }
@@ -18,7 +19,7 @@ function loadAddVideo () {
 // ------------------Matching with the snapshot
 // ---------------------------------
 it('matching the snapshot' , () => {
-    const tree = renderer.create(<AddVideo />).toJSON()
+    const tree = renderer.create(<AddVideo data={data}/>).toJSON()
     expect(tree).toMatchSnapshot()
 })
 

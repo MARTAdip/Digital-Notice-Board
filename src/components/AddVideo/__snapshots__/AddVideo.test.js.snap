@@ -1,68 +1,120 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matching the snapshot 1`] = `
-<form
-  className="AddVideo"
-  onSubmit={undefined}
->
-  <h1>
-    Add Video
-  </h1>
-  <input
-    id="type"
-    type="text"
-    value="video"
-  />
-  <label>
-    Title
-  </label>
-  <input
-    className="form-control"
-    id="title"
-    type="text"
-  />
-  <label>
-    Description
-  </label>
-  <input
-    className="form-control"
-    id="description"
-    type="text"
-  />
-  <label>
-    Display Date
-  </label>
-  <input
-    className="form-control"
-    id="displayDate"
-    type="date"
-  />
-  <label>
-    Expiry Date
-  </label>
-  <input
-    className="form-control"
-    id="expiryDate"
-    type="date"
-  />
-  <label>
-    Youtube Embed Code
-  </label>
-  <input
-    className="form-control"
-    id="content"
-  />
-  <a
-    href="#"
+Array [
+  <div
+    className="form-group"
   >
-    Delete this Video
-  </a>
-  <br />
-  <button
-    className="btn btn-primary"
-    type="submit"
+    <label
+      className=""
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <input
+      className="is-valid form-control"
+      id="title"
+      onChange={[Function]}
+      type="text"
+      value="Create restful curl api using nodeJs, express and mongoose"
+    />
+    <div
+      className="invalid-feedback"
+    />
+    <div
+      className="valid-feedback"
+    />
+  </div>,
+  <div
+    className="form-group"
   >
-    Add
-  </button>
-</form>
+    <label
+      className=""
+      htmlFor="description"
+    >
+      Description
+    </label>
+    <input
+      className="is-valid form-control"
+      id="description"
+      onChange={[Function]}
+      type="text"
+      value="you can learn how to create curl api usign nodejs experess and mongoose."
+    />
+    <div
+      className="invalid-feedback"
+    />
+    <div
+      className="valid-feedback"
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="displayDate"
+    >
+      Display Date
+    </label>
+    <input
+      className="form-control is-valid form-control"
+      id="displayDate"
+      onChange={[Function]}
+      type="date"
+    />
+    <div
+      className="invalid-feedback"
+    />
+    <div
+      className="valid-feedback"
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="expiryDate"
+    >
+      Expiry Date
+    </label>
+    <input
+      className="form-control is-valid form-control"
+      id="expiryDate"
+      onChange={[Function]}
+      type="date"
+      value="1979-08-23T00:00:00.000Z"
+    />
+    <div
+      className="invalid-feedback"
+    />
+    <div
+      className="valid-feedback"
+    />
+  </div>,
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="content"
+    >
+      Youtube-Link
+    </label>
+    <input
+      className="is-valid form-control"
+      id="content"
+      onChange={[Function]}
+      type="text"
+      value="https://www.youtube.com/watch?v=7FOmlkQAEgU"
+    />
+    <div
+      className="invalid-feedback"
+    />
+    <div
+      className="valid-feedback"
+    />
+  </div>,
+]
 `;
