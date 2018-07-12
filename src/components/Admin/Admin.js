@@ -34,7 +34,9 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:4000`)
+    const domain = process.env.REACT_APP_DOMAIN || "http://localhost";
+    const port = process.env.REACT_APP_BACKENDPORT || 4000;
+    fetch(`${domain}:${port}`)
     .then(resp => resp.json())
     .then((data) => {
         this.setState({data: data, currentSlide: data[0]
