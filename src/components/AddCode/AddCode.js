@@ -2,31 +2,25 @@ import React from "react";
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from "reactstrap";
 
 class AddCode extends React.Component {
-  constructor(props) {
-    super(props);
-    var props = this.props.data;
-    props.displayDate = props.displayDate ? props.displayDate.slice(0, -14) : props.displayDate;
-    props.expiryDate = props.expiryDate ? props.expiryDate.slice(0, -14) : props.expiryDate;
-    this.state = {
+    state = {
       form: this.props.data,
       fields: {},
       errors: {}
     };
-  }
 
   // new lifecycle method. Called when receiving new props.
   // here: updates state with formdata if new props are different from previous state
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (nextProps.data === prevState.data) return null;
+    if (nextProps.data._id === prevState.form._id) return null;
     else return { form: nextProps.data };
   };
 
   //TODO optimize this validation and make it work for the other fields
   //https://waffle.io/devugees/digital-notice-board/cards/5ac2807897f9dd00256b555a
   onChange(field, value) {
-    let data = { ...this.state.form };
-    data[field] = value;
-    this.setState({ form: data });
+    let form = {...this.state.form};
+    form[field] = value
+    this.setState({form})
   }
 
   render() {
