@@ -71,30 +71,30 @@ class Admin extends Component {
     //TODO POST method is sending the object not correctly
     this.setState({form: form})
 
-    // if(slide.state.form._id){
-    //   axios.put(`http://localhost:4000/admin/edit/${slide.state.form._id}`, form)
-    //   .then(response => {
-    //     console.log(response.data.message);
-    //     if(response.data.message === "Slide updated successfully!"){
-    //       this.alertFunc("Slide edited successful", "primary")
-    //     } else {
-    //       this.alertFunc("Error: " + response.data.message, "danger")
-    //       console.log("Error: ", response);
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log("Error: ", error);
-    //   })
-    // } else {
-    //
-    //   axios.post('http://localhost:4000/admin/add', form)
-    //   .then(function (response) {
-    //     console.log("Slide added successful: ", response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log("Error: ", error);
-    //   })
-    // }
+    if(slide.state.form._id){
+      axios.put(`http://localhost:4000/admin/edit/${slide.state.form._id}`, form)
+      .then(response => {
+        console.log(response.data.message);
+        if(response.data.message === "Slide updated successfully!"){
+          this.alertFunc("Slide edited successful", "primary")
+        } else {
+          this.alertFunc("Error: " + response.data.message, "danger")
+          console.log("Error: ", response);
+        }
+      })
+      .catch(function (error) {
+        console.log("Error: ", error);
+      })
+    } else {
+    
+      axios.post('http://localhost:4000/admin/add', form)
+      .then(function (response) {
+        console.log("Slide added successful: ", response);
+      })
+      .catch(function (error) {
+        console.log("Error: ", error);
+      })
+    }
   }
   slideHandler(slide) {
     this.setState({currentSlide: slide})
