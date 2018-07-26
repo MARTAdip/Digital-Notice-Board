@@ -5,34 +5,38 @@ import { DATACACHE } from "../../constants/misc.js";
 import "./meetup.css";
 const moment = require('moment');
 
-  class Meetup extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        events: {},
-        loading: true
-      }
-  }
-   componentDidMount() {
-    if (localStorage.getItem('meetup-data') && JSON.parse(localStorage.getItem('meetup-data')).timestamp + DATACACHE > Date.now()){
-      this.setState({timestamp: Date.now(), events: JSON.parse(localStorage.getItem('meetup-data')).events, loading: false})
-      let newtime = JSON.parse(localStorage.getItem('meetup-data'))
-      newtime.timestamp = Date.now()
-      localStorage.setItem('meetup-data', JSON.stringify(newtime))
+class Meetup extends Component {
+    state = {
+      data: this.props.data,
+      events: {},
+      loading: true
+    }
+  fetchData = (nextProps) => {
+    const cachedUntil = (JSON.parse(localStorage.getItem(`meetup-data-${nextProps.data.content}`))) ? JSON.parse(localStorage.getItem(`meetup-data-${nextProps.data.content}`)).timestamp + DATACACHE : false;
+    const now = Date.now();
+    const locStorage = localStorage.getItem(`meetup-data-${nextProps.data.content}`);
+
+    if (locStorage && cachedUntil > now) {
+      this.setState({ events: JSON.parse(locStorage).events, loading: false })
     } else {
-      fetch(`https://cors-anywhere.herokuapp.com/https://api.meetup.com/How-to-become-a-Web-Developer/events?photo-host=public&page=20&sig_id=${process.env.REACT_APP_MEETUPAPIKEY}`)
-      .then(resp => resp.json())
-      .then((data) => {
-        this.setState({timestamp: Date.now(), events: data, loading: false})
-        localStorage.setItem('meetup-data', JSON.stringify({timestamp: Date.now(), events: data}))
-
-      });
-
+      fetch(`https://cors-anywhere.herokuapp.com/https://api.meetup.com/${nextProps.data.content}/events?&sign=true&photo-host=public&page=20`)
+        .then(resp => resp.json())
+        .then((data) => {
+          this.setState({ timestamp: Date.now(), events: data, loading: false })
+          localStorage.setItem(`meetup-data-${nextProps.data.content}`, JSON.stringify({ timestamp: Date.now(), events: data }))
+        });
     }
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    this.fetchData(nextProps) 
+  }
 
-  render(props) {
+  componentDidMount= () => {
+    this.fetchData(this.state) 
+  }
+
+  render() {
     if(this.state.events.length > 0) {
       var content = this.state.events.map((event, i) =>{
          if(i > 0 && this.state.events[i - 1].name == event.name)
