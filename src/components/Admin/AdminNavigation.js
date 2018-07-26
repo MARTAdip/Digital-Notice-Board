@@ -27,7 +27,7 @@ class AdminNavigation extends Component {
                 <NavLink href="/">Frontend</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink target="_blank"  href="https://github.com/devugees/digital-notice-board">GitHub</NavLink>
+                <NavLink target="_blank"  href="https://github.com/DigitalCareerInstitute/digital-notice-board">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -38,6 +38,7 @@ class AdminNavigation extends Component {
                   <DropdownItem onClick={e => this.props.newSlide('code')}><i className="fa fa-plus mr-2"></i> Code</DropdownItem>
                   <DropdownItem onClick={e => this.props.newSlide('announcement')}><i className="fa fa-plus mr-2"></i> Announcement</DropdownItem>
                   <DropdownItem onClick={e => this.props.newSlide('photos')}><i className="fa fa-plus mr-2"></i> Photos</DropdownItem>
+                  <DropdownItem onClick={e => this.props.newSlide('meetup')}><i className="fa fa-plus mr-2"></i> Meetup</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
